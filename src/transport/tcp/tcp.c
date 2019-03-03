@@ -1014,7 +1014,7 @@ tcptran_ep_get_url(void *arg, void *v, size_t *szp, nni_opt_type t)
 	int         port = 0;
 
 	if (ep->listener != NULL) {
-		(void) nng_stream_listener_get_int(
+		(void) nng_stream_listener_getopt_int(
 		    ep->listener, NNG_OPT_TCP_BOUND_PORT, &port);
 	}
 

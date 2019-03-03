@@ -40,7 +40,7 @@ TestMain("Supplemental TCP", {
 			ip[1] = 0;
 			ip[2] = 0;
 			ip[3] = 1;
-			So(nng_stream_listener_get(
+			So(nng_stream_listener_getopt(
 			       l, NNG_OPT_LOCADDR, &sa, &sz) == 0);
 			So(sz == sizeof(sa));
 			So(sa.s_in.sa_port != 0);
@@ -113,20 +113,20 @@ TestMain("Supplemental TCP", {
 					});
 
 					on = true;
-					So(nng_stream_set(c1,
+					So(nng_stream_setopt(c1,
 					       NNG_OPT_TCP_NODELAY, &on,
 					       sizeof(on)) == 0);
-					So(nng_stream_set(c2,
+					So(nng_stream_setopt(c2,
 					       NNG_OPT_TCP_NODELAY, &on,
 					       sizeof(on)) == 0);
 
-					So(nng_stream_set(c1,
+					So(nng_stream_setopt(c1,
 					       NNG_OPT_TCP_KEEPALIVE, &on,
 					       sizeof(on)) == 0);
 
 					on = false;
 					sz = sizeof(on);
-					So(nng_stream_get(c1,
+					So(nng_stream_getopt(c1,
 					       NNG_OPT_TCP_NODELAY, &on,
 					       &sz) == 0);
 					So(sz == sizeof(on));
@@ -134,7 +134,7 @@ TestMain("Supplemental TCP", {
 
 					on = false;
 					sz = sizeof(on);
-					So(nng_stream_get(c1,
+					So(nng_stream_getopt(c1,
 					       NNG_OPT_TCP_KEEPALIVE, &on,
 					       &sz) == 0);
 					So(sz == sizeof(on));
@@ -170,7 +170,7 @@ TestMain("Supplemental TCP", {
 
 					Convey("Socket name matches", {
 						sz = sizeof(sa2);
-						So(nng_stream_get(c2,
+						So(nng_stream_getopt(c2,
 						       NNG_OPT_LOCADDR, &sa2,
 						       &sz) == 0);
 						So(sz == sizeof(sa2));
@@ -185,7 +185,7 @@ TestMain("Supplemental TCP", {
 
 					Convey("Peer name matches", {
 						sz = sizeof(sa2);
-						So(nng_stream_get(c1,
+						So(nng_stream_getopt(c1,
 						       NNG_OPT_REMADDR, &sa2,
 						       &sz) == 0);
 						So(sz == sizeof(sa2));

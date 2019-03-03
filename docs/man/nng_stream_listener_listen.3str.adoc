@@ -42,7 +42,7 @@ when a TCP port number of zero is specified, indicating that an
 ephemeral port should be used), this operation will allocate that
 resource.
 This can permit retrieval of the selected address using
-xref:nng_stream_listener_get.3str.adoc[`nng_stream_listener_get()`],
+xref:nng_stream_listener_getopt.3str.adoc[`nng_stream_listener_getopt()`],
 typically with the
 xref:nng_options.5.adoc#NNG_OPT_LOCADDR[`NNG_OPT_LOCADDR`] option.
 

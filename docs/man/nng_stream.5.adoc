@@ -60,8 +60,8 @@ Byte streams may, depending on the underlying technology,
 support various
 xref:nng_options.5.adoc[options], which
 can be accessed using the
-xref:nng_stream_get.3str.adoc[`nng_stream_get()`] and
-xref:nng_stream_set.3str.adoc[`nng_stream_set()`] family of
+xref:nng_stream_getopt.3str.adoc[`nng_stream_getopt()`] and
+xref:nng_stream_setopt.3str.adoc[`nng_stream_setopt()`] family of
 functions.
 
 == SEE ALSO

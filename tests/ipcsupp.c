@@ -123,7 +123,7 @@ TestMain("Supplemental IPC", {
 					So(memcmp(buf1, buf2, 5) == 0);
 
 					Convey("Socket name matches", {
-						So(nng_stream_get_addr(c2,
+						So(nng_stream_getopt_addr(c2,
 						       NNG_OPT_LOCADDR,
 						       &sa2) == 0);
 						So(sa2.s_ipc.sa_family ==

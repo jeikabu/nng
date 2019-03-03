@@ -1117,7 +1117,7 @@ tlstran_ep_get_url(void *arg, void *v, size_t *szp, nni_type t)
 	int         port = 0;
 
 	if (ep->listener != NULL) {
-		(void) nng_stream_listener_get_int(
+		(void) nng_stream_listener_getopt_int(
 		    ep->listener, NNG_OPT_TCP_BOUND_PORT, &port);
 	}
 	if ((rv = nni_url_asprintf_port(&s, ep->url, port)) == 0) {

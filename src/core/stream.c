@@ -288,14 +288,14 @@ nni_stream_checkopt(const char *scheme, const char *name, const void *data,
 //
 
 #define DEFGET(base)                                                         \
-	int nng_##base##_get(                                                \
+	int nng_##base##_getopt(                                                \
 	    nng_##base *s, const char *nm, void *vp, size_t *szp)            \
 	{                                                                    \
 		return (nni_##base##_getx(s, nm, vp, szp, NNI_TYPE_OPAQUE)); \
 	}
 
 #define DEFTYPEDGET(base, suffix, type, nnitype)                     \
-	int nng_##base##_get_##suffix(                               \
+	int nng_##base##_getopt_##suffix(                               \
 	    nng_##base *s, const char *nm, type *vp)                 \
 	{                                                            \
 		size_t sz = sizeof(*vp);                             \
@@ -317,26 +317,26 @@ DEFGETALL(stream_dialer)
 DEFGETALL(stream_listener)
 
 #define DEFSET(base)                                                        \
-	int nng_##base##_set(                                               \
+	int nng_##base##_setopt(                                               \
 	    nng_##base *s, const char *nm, const void *vp, size_t sz)       \
 	{                                                                   \
 		return (nni_##base##_setx(s, nm, vp, sz, NNI_TYPE_OPAQUE)); \
 	}
 
 #define DEFTYPEDSETEX(base, suffix, type, len, nnitype)                      \
-	int nng_##base##_set_##suffix(nng_##base *s, const char *nm, type v) \
+	int nng_##base##_setopt_##suffix(nng_##base *s, const char *nm, type v) \
 	{                                                                    \
 		return (nni_##base##_setx(s, nm, &v, len, nnitype));         \
 	}
 
 #define DEFTYPEDSET(base, suffix, type, nnitype)                             \
-	int nng_##base##_set_##suffix(nng_##base *s, const char *nm, type v) \
+	int nng_##base##_setopt_##suffix(nng_##base *s, const char *nm, type v) \
 	{                                                                    \
 		return (nni_##base##_setx(s, nm, &v, sizeof(v), nnitype));   \
 	}
 
 #define DEFSTRINGSET(base)                                            \
-	int nng_##base##_set_string(                                  \
+	int nng_##base##_setopt_string(                                  \
 	    nng_##base *s, const char *nm, const char *v)             \
 	{                                                             \
 		return (nni_##base##_setx(s, nm, v,                   \
@@ -344,7 +344,7 @@ DEFGETALL(stream_listener)
 	}
 
 #define DEFSOCKADDRSET(base)                                      \
-	int nng_##base##_set_adddr(                               \
+	int nng_##base##_setopt_addr(                               \
 	    nng_##base *s, const char *nm, const nng_sockaddr *v) \
 	{                                                         \
 		return (nni_##base##_setx(                        \
